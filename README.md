@@ -76,10 +76,17 @@ when divided by the smaller of the two.
 
 With this version, the algorithm stops when reaching a zero remainder.
 
-For two given numbers *a* and *b*, such that *a* >= *b*:
+For two given numbers *a* and *b*:
 
 - if b divides a (b | a), then gcd(a, b) = b,
 - otherwise gcd(a, b) = gcd(b, a mod b).
+
+Notice that the function is self-sorting.
+When a < b, then b does not divide a.
+The otherwise case is called.
+When a < b, then the quotient is 0 and the remainder is a.
+The recursive call to gcd(b, a mod b) is gcd(b, a), where b > a.
+The parameters input are now a > b.
 
 ```
 def gcd(a, b):
@@ -87,4 +94,61 @@ def gcd(a, b):
         return b
     else:
         return gcd(b, a mod b)
+```
+
+### Coprimes - converse of gcd
+
+if gcd(a, b) = 1, then *a* and *b* are said to be coprime (or, relatively prime).
+This property does not imply that *a* or *b* are themselves prime numbers.
+For example, 6 and 35 factor as 6 = 2 x 3 and 35 = 5 x 7, so they are not prime,
+but their prime factors are different, so 6 and 35 are coprime,
+with no common factors other than 1.
+
+The coprime property can be used to prove whether N and M have the same set of prime divisors,
+by showing that it is not the case that N and M are coprime.
+
+
+
+Where A and B are arrays of integers,
+for every pair of A and B values,
+get that gcd.
+
+Keep checking whether the next quotient is the smallest quotient.
+
+When the gcd of quotient of a is 1 relative to the gcd of values a and b,
+then these values are coprime, and will not have common prime divisor.
+
+When the smallest quotient is found, then the result of quotient / gcd_of_that_value is 1.
+
+```
+def haveCommonPrimeDivisors(a, b):
+    for every i in A and B:
+        gcd_of_a_and_b = gcd(a, b)
+
+        // define a gcd variable just for a
+        int gcd_value_of_a
+
+        // define a gcd variable just for b
+        int gcd_value_of_b
+
+        // define temporary value to track a quotient of divisors
+        int quotient_a = a
+
+        // define temporary value to track b quotient of divisors
+        int quotient_b = b
+
+        while quotient_a != 1:
+            gcd_value_of_a = gcd(quotient_a, gcd_of_a_and_b)
+            if gcd_value_of_a == 1:
+                break
+            quotient_a = quotient_a / gcd_value_of_a
+        if quotient_a != 1:
+            return false
+
+        while quotient_b != 1:
+            gcd_value_of_b = gcd(quotient_b, gcd_of_a_and_b
+            if gcd_value_of_b == 1
+                break
+            quotient_b = quotient_b / gcd_value_of_b
+        return b == 1
 ```
