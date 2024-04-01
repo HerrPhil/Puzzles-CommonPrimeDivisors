@@ -107,6 +107,7 @@ with no common factors other than 1.
 The coprime property can be used to prove whether N and M have the same set of prime divisors,
 by showing that it is not the case that N and M are coprime.
 
+The greatest common divisor of two numbers a and b is the product of the prime factors shared by the two numbers.
 
 
 Where A and B are arrays of integers,
